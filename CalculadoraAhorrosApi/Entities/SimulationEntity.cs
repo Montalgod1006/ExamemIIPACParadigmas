@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CalculadoraAhorrosApi.Entities
 {
     [Table("simulations")]
-    public class Simulation
+    public class SimulationEntity
     {
        
         [Required()]
