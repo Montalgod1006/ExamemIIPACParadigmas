@@ -1,0 +1,25 @@
+meta {
+  name: Crear
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{PATH_URL}}/simulation
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "initialAmount": 100.00,
+    "initialTaxYearly": 0.05,
+    "plazoDeAños": 4,
+    "createdDate": "2026-07-11T20:30:00"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
