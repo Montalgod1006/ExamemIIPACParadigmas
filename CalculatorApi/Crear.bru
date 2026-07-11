@@ -6,8 +6,17 @@ meta {
 
 post {
   url: {{PATH_URL}}/simulation
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "initialAmount": 100.00,
+    "initialTaxYearly": 0.05,
+    "plazoDeAños": 4,
+    "createdDate": "2026-07-10T20:30:00"
+  }
 }
 
 settings {

@@ -178,9 +178,16 @@ namespace CalculadoraAhorrosApi.Services.Simulation
 
         public async Task<ResponseDto<SimulationActionResponseDto>> CreateAsync(SimulationCreateDto dto)
         {
-            decimal finalAmount,  totalInterest;
-            totalInterest = dto.InitialAmount*(dto.PlazoDeAños*12) - dto.InitialAmount;
-            finalAmount = dto.InitialAmount*(dto.PlazoDeAños*12);
+            decimal finalAmount,  totalInterest, saldo;
+            
+            saldo = dto.InitialAmount * (decimal)Math.Pow((double)(1 + (dto.InitialTaxYearly/12)), (dto.PlazoDeAños*12));
+
+            totalInterest = saldo - dto.InitialAmount;
+            finalAmount = saldo;
+
+
+
+            Console.WriteLine(totalInterest +" "+ finalAmount);
 
             if(dto.InitialAmount <= 0  ||  dto.InitialTaxYearly <= 0  ||dto.PlazoDeAños <= 0)
             {
