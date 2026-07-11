@@ -5,15 +5,15 @@ meta {
 }
 
 get {
-  url: {{PATH_URL}}?SearchTerm&page&pageSize
+  url: {{PATH_URL}}/simulation/?SearchTerm=&page=1&pageSize=10
   body: none
   auth: inherit
 }
 
 params:query {
   SearchTerm: 
-  page: 
-  pageSize: 
+  page: 1
+  pageSize: 10
 }
 
 settings {
