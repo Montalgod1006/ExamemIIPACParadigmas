@@ -15,7 +15,7 @@ namespace CalculadoraAhorrosApi.Mappers
                 PlazoDeAños = dto.PlazoDeAños,
                 FinalAmount = finalAmount,
                 TotalInterest = totalInterest,
-                CreatedDate = DateTime.Now
+                CreatedDate = dto.CreatedDate/*DateTime.Now*/
             };
         }
 
@@ -27,7 +27,7 @@ namespace CalculadoraAhorrosApi.Mappers
                 InitialAmount = entity.InitialAmount,
                 InitialTaxYearly = entity.InitialTaxYearly,
                 PlazoDeAños = entity.PlazoDeAños,
-                Final = entity.FinalAmount,
+                FinalAmount = entity.FinalAmount,
                 TotalInterest = entity.TotalInterest,
                 CreatedDate = entity.CreatedDate
             };
