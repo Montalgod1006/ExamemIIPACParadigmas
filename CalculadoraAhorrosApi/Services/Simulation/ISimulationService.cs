@@ -7,8 +7,8 @@ namespace CalculadoraAhorrosApi.Services.Simulation
     {
         Task<ResponseDto<PageDto<List<SimulationDto>>>> GetPageAsync(string searchTerm = "", int page = 1, int pageSize = 10);
         Task<ResponseDto<SimulationDto>> GetOneByIdAsync(string id);
-        Task<ResponseDto<List<SimulationDto>>> GetOneByIdAsyncMonthly(string id);
-        Task<ResponseDto<List<SimulationDto>>> GetOneByIdAsyncYearly(string id);
+        Task<ResponseDto<List<SimulationMonthlyDto>>> GetOneByIdAsyncMonthly(string id);
+        Task<ResponseDto<List<SimulationYearlyDto>>> GetOneByIdAsyncYearly(string id);
         Task <ResponseDto<SimulationActionResponseDto>> CreateAsync(SimulationCreateDto dto);
 
     }
