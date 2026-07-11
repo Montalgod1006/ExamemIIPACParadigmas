@@ -1,0 +1,16 @@
+meta {
+  name: Proyección mensual
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{PATH_URL}}/simulation/{id}/monthly
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

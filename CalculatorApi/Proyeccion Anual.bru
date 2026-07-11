@@ -1,0 +1,16 @@
+meta {
+  name: Proyeccion Anual
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{PATH_URL}}/simulation/{id}/yearly
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

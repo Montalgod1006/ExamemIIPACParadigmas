@@ -86,13 +86,12 @@ namespace CalculadoraAhorrosApi.Services.Simulation
             };
         }
 
-        public async Task<ResponseDto<List<SimulationDto>>> GetOneByIdAsyncMonthly(string id)
+        public async Task<ResponseDto<List<SimulationMonthlyDto>>> GetOneByIdAsyncMonthly(string id)
         {
             var simulationEntity = await _context.Simulations.FirstOrDefaultAsync(x => x.Id == id);
-
             if(simulationEntity is null)
             {
-                return new ResponseDto<List<SimulationDto>>
+                return new ResponseDto<List<SimulationMonthlyDto>>
                 {
                     StatusCode = HttpStatusCode.NOT_FOUND,
                     Status = false,
@@ -100,7 +99,7 @@ namespace CalculadoraAhorrosApi.Services.Simulation
                 };
             }
 
-            List<SimulationDto> months = new List<SimulationDto>();
+            List<SimulationMonthlyDto> months = new List<SimulationMonthlyDto>();
 
             decimal previousAmount = simulationEntity.InitialAmount;
             decimal monthlyRate = simulationEntity.InitialTaxYearly / 12;
@@ -110,32 +109,31 @@ namespace CalculadoraAhorrosApi.Services.Simulation
             {
                 decimal currentAmount = simulationEntity.InitialAmount * (decimal)Math.Pow((double)(1 + monthlyRate), month);
                 decimal interestGenerated = currentAmount - previousAmount;
-                months.Add(new SimulationDto
+                months.Add(new SimulationMonthlyDto
                 {
                     Id = simulationEntity.Id,
-                    InitialAmount = month,
-                    FinalAmount = currentAmount,
-                    TotalInterest = interestGenerated
+                    Month = month,
+                    MonthlyAmount = currentAmount,
+                    MonthlyTotalInterest = interestGenerated
                 });
 
                 previousAmount = currentAmount;
             }
-            return new ResponseDto<List<SimulationDto>>
+            return new ResponseDto<List<SimulationMonthlyDto>>
             {
                 StatusCode = HttpStatusCode.Ok,
                 Status = true,
                 Message = HttpMessageResponse.REGISTER_FOUND,
                 Data = months
             };
-
         }
-        public async Task<ResponseDto<List<SimulationDto>>> GetOneByIdAsyncYearly(string id)
+        public async Task<ResponseDto<List<SimulationYearlyDto>>> GetOneByIdAsyncYearly(string id)
         {
             var simulationEntity = await _context.Simulations.FirstOrDefaultAsync(x => x.Id == id);
 
             if(simulationEntity is null)
             {
-                return new ResponseDto<List<SimulationDto>>
+                return new ResponseDto<List<SimulationYearlyDto>>
                 {
                     StatusCode = HttpStatusCode.NOT_FOUND,
                     Status = false,
@@ -143,7 +141,7 @@ namespace CalculadoraAhorrosApi.Services.Simulation
                 };
             }
 
-            List<SimulationDto> years = new List<SimulationDto>();
+            List<SimulationYearlyDto> years = new List<SimulationYearlyDto>();
 
             decimal previousAmount = simulationEntity.InitialAmount;
 
@@ -158,18 +156,18 @@ namespace CalculadoraAhorrosApi.Services.Simulation
 
                 decimal interestGenerated = currentAmount - previousAmount;
 
-                years.Add(new SimulationDto
+                years.Add(new SimulationYearlyDto
                 {
                     Id = simulationEntity.Id,
-                    InitialAmount = year,
-                    FinalAmount = currentAmount,
-                    TotalInterest = interestGenerated
+                    Year = year,
+                    YearlyAmount = currentAmount,
+                    YearlyTotalInterest = interestGenerated
                 });
                 previousAmount = currentAmount;
 
             }
 
-            return new ResponseDto<List<SimulationDto>>
+            return new ResponseDto<List<SimulationYearlyDto>>
             {
                 StatusCode = HttpStatusCode.Ok,
                 Status = true,

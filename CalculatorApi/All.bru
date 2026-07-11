@@ -1,0 +1,22 @@
+meta {
+  name: All
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{PATH_URL}}?SearchTerm&page&pageSize
+  body: none
+  auth: inherit
+}
+
+params:query {
+  SearchTerm: 
+  page: 
+  pageSize: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
