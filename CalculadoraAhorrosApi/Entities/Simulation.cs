@@ -9,11 +9,12 @@ namespace CalculadoraAhorrosApi.Entities
        
         [Required()]
         [Column("id")]
-
         public string Id { get; set; }
+
         [Required()]
         [Column("initial_amount")]
         public decimal InitialAmount { get; set; }
+        
         [Required()]
         [Column("initial_tax_yearly")]
         public decimal InitialTaxYearly { get; set; }
