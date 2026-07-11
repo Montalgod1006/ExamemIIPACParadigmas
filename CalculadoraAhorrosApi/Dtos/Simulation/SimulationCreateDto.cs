@@ -12,5 +12,6 @@ namespace CalculadoraAhorrosApi.Dtos.Simulation
 
         [Required]
         public int PlazoDeAños { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

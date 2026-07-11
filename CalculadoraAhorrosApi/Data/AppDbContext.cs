@@ -9,7 +9,7 @@ namespace CalculadoraAhorrosApi.Data
         {
         }
 
-        public DbSet<Simulation> Persons { get; set; }
+        public DbSet<SimulationEntity> Simulations { get; set; }
             
     }
 }
